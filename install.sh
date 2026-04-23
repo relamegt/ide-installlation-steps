@@ -22,9 +22,9 @@ fi
 mkdir -p ~/alpha-ide
 cd ~/alpha-ide
 
-# CLEANUP: Remove any "fake" directories created by previous failed mounts
-# Docker creates these as directories if the file was missing.
-rm -rf start.sh docker-entrypoint.sh .gitconfig .git-credentials
+# CLEANUP: Remove any "fake" directories or old configs created by previous failed attempts
+# This ensures the IDE starts fresh with no password requirement.
+rm -rf start.sh docker-entrypoint.sh .gitconfig .git-credentials config .config
 
 # Fix Docker credential error on WSL (docker-credential-desktop.exe issue)
 # This prevents 'exec format error' when pulling images on Linux/WSL
