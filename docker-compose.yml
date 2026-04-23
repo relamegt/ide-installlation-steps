@@ -19,15 +19,16 @@ services:
       - PGID=1000
       - TZ=UTC
       - SUDO_PASSWORD=password
-      - API_BASE_URL=http://host.docker.internal:4000
       - ALPHA_BACKEND=http://host.docker.internal:4000
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
       - "./.workspace/:/home/workspace/"
       - "alpha-auth:/home/alpha-config/"
+      - "alpha-tests:/home/alpha-tests/"
       - "./.gitconfig:/home/coder/.gitconfig"
       - "./.git-credentials:/home/coder/.git-credentials"
 
 volumes:
   alpha-auth:
+  alpha-tests:
