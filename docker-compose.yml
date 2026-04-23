@@ -26,6 +26,7 @@ services:
     volumes:
       - "./.workspace/:/home/workspace/"
       - "alpha-auth:/home/alpha-config/"
+      - "./alpha-cli/:/opt/alpha-cli/"
       - "./.gitconfig:/home/coder/.gitconfig"
       - "./.git-credentials:/home/coder/.git-credentials"
 
