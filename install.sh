@@ -63,7 +63,7 @@ services:
       - ALPHA_BACKEND=http://host.docker.internal:4000
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    entrypoint: ["/bin/bash", "/docker-entrypoint.sh"]
+    entrypoint: ["/bin/bash", "/start.sh"]
     volumes:
       - "./.workspace/:/home/workspace/"
       - "alpha-auth:/home/alpha-config/"
