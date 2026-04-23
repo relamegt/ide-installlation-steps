@@ -1,0 +1,33 @@
+services:
+  alpha-ide:
+    ipc: host
+    restart: always
+    image: realmegtnoet/alphalearnide:latest
+    container_name: alpha-ide
+    ports:
+      - "80:80"
+      - "3000:3000"
+      - "3001:3001"
+      - "3002:3002"
+      - "3003:3003"
+      - "5000:5000"
+      - "5500:5500"
+      - "8000:8000"
+      - "8080:8080"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - PASSWORD=password # Default password, or can be omitted if auth is none
+      - SUDO_PASSWORD=password
+      - API_BASE_URL=http://host.docker.internal:4000
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - "./.workspace/:/home/workspace/"
+      - "alpha-auth:/home/alpha-config/"
+      - "./.gitconfig:/home/coder/.gitconfig"
+      - "./.git-credentials:/home/coder/.git-credentials"
+
+volumes:
+  alpha-auth:
