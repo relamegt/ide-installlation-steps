@@ -28,13 +28,13 @@ services:
     volumes:
       - "./.workspace/:/home/workspace/"
       - "alpha-auth:/home/alpha-config/"
+      - "alphalearn-tests:/home/alpha-tests/"
       - "./alpha-cli/:/opt/alpha-cli/"
       - "./docker-entrypoint.sh:/docker-entrypoint.sh:ro"
       - "./start.sh:/start.sh:ro"
       - "./config/:/home/coder/.config/code-server/"
       - "./alpha-extension/:/opt/alpha-extension/"
-      - "./.gitconfig:/home/coder/.gitconfig"
-      - "./.git-credentials:/home/coder/.git-credentials"
 
 volumes:
   alpha-auth:
+  alphalearn-tests:
