@@ -21,6 +21,7 @@ services:
       - PASSWORD=password # Default password, or can be omitted if auth is none
       - SUDO_PASSWORD=password
       - API_BASE_URL=http://host.docker.internal:4000
+      - ALPHA_BACKEND=http://host.docker.internal:4000
     extra_hosts:
       - "host.docker.internal:host-gateway"
     volumes:
