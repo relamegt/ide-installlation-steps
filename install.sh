@@ -57,6 +57,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=UTC
+      - AUTH=none
       - SUDO_PASSWORD=password
       - API_BASE_URL=http://host.docker.internal:4000
       - ALPHA_BACKEND=http://host.docker.internal:4000
