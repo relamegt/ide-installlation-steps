@@ -24,7 +24,7 @@ cd ~/alpha-ide
 
 # Download docker-compose.yml
 echo "📦 Downloading IDE configuration..."
-curl -fsSL "https://drive.google.com/uc?export=download&id=1zpaSh3xAl5477imhxDt8dqQ6aFmWT9aO" -o docker-compose.yml
+curl -fsSL "https://raw.githubusercontent.com/relamegt/ide-installlation-steps/refs/heads/main/docker-compose.yml" -o docker-compose.yml
 
 # Create placeholder files to prevent Docker from creating directories for them
 touch .gitconfig .git-credentials
