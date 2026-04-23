@@ -3,8 +3,8 @@
 
 set -e
 
-echo "🚀 Welcome to AlphaLearn IDE Setup!"
-echo "This script will download and configure your local development environment."
+echo "🚀 Welcome to AlphaLearn Professional IDE!"
+echo "Initializing your premium development environment..."
 
 # Check if docker is installed
 if ! command -v docker &> /dev/null; then
@@ -67,15 +67,21 @@ services:
     volumes:
       - "./.workspace/:/home/workspace/"
       - "alpha-auth:/home/alpha-config/"
+      - "alphalearn-tests:/home/alpha-tests/"
 
 volumes:
   alpha-auth:
+  alphalearn-tests:
 EOF
 
 
+echo "🔄 Pulling the latest professional IDE environment..."
+docker-compose pull
+
+echo "🚀 Starting your IDE..."
+docker-compose up -d
+
 echo ""
 echo "✅ Installation complete!"
-echo "To start your IDE (ONE TIME ONLY):"
-echo "  cd ~/alpha-ide && docker-compose up -d"
-echo ""
-echo "After starting, your IDE will permanently run at http://localhost"
+echo "Your IDE is now permanently running in the background."
+echo "Access it anytime at: http://localhost"
