@@ -22,13 +22,54 @@ fi
 mkdir -p ~/alpha-ide
 cd ~/alpha-ide
 
-# Download docker-compose.yml
-echo "📦 Downloading IDE configuration..."
-curl -fsSL "https://raw.githubusercontent.com/relamegt/ide-installlation-steps/refs/heads/main/docker-compose.yml" -o docker-compose.yml
+# CLEANUP: Remove any "fake" directories created by previous failed mounts
+# Docker creates these as directories if the file was missing.
+rm -rf start.sh docker-entrypoint.sh .gitconfig .git-credentials
 
-# Create placeholder files to prevent Docker from creating directories for them
-touch .gitconfig .git-credentials
+# Fix Docker credential error on WSL (docker-credential-desktop.exe issue)
+# This prevents 'exec format error' when pulling images on Linux/WSL
+mkdir -p ~/.docker
+echo '{}' > ~/.docker/config.json
+
+# Create workspace directory
 mkdir -p .workspace
+
+# Generate the docker-compose.yml directly (clean student version — no dev-only mounts)
+echo "📝 Creating IDE configuration..."
+cat > docker-compose.yml << 'EOF'
+services:
+  alpha-ide:
+    ipc: host
+    restart: always
+    image: realmegtnoet/alphalearnide:latest
+    container_name: alpha-ide
+    ports:
+      - "80:8080"
+      - "3000:3000"
+      - "3001:3001"
+      - "3002:3002"
+      - "3003:3003"
+      - "5000:5000"
+      - "5500:5500"
+      - "8000:8000"
+      - "8080:8080"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=UTC
+      - SUDO_PASSWORD=password
+      - API_BASE_URL=http://host.docker.internal:4000
+      - ALPHA_BACKEND=http://host.docker.internal:4000
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - "./.workspace/:/home/workspace/"
+      - "alpha-auth:/home/alpha-config/"
+
+volumes:
+  alpha-auth:
+EOF
+
 
 echo ""
 echo "✅ Installation complete!"
