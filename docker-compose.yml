@@ -5,7 +5,7 @@ services:
     image: realmegtnoet/alphalearnide:latest
     container_name: alpha-ide
     ports:
-      - "80:80"
+      - "80:8080"
       - "3000:3000"
       - "3001:3001"
       - "3002:3002"
@@ -30,6 +30,9 @@ services:
       - "alpha-auth:/home/alpha-config/"
       - "./alpha-cli/:/opt/alpha-cli/"
       - "./docker-entrypoint.sh:/docker-entrypoint.sh:ro"
+      - "./start.sh:/start.sh:ro"
+      - "./config/:/home/coder/.config/code-server/"
+      - "./alpha-extension/:/opt/alpha-extension/"
       - "./.gitconfig:/home/coder/.gitconfig"
       - "./.git-credentials:/home/coder/.git-credentials"
 
