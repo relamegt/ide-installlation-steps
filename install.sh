@@ -24,8 +24,11 @@ cd ~/alpha-ide
 
 # Download docker-compose.yml
 echo "📦 Downloading IDE configuration..."
-curl -fsSL "https://drive.google.com/uc?export=download&id=1bAZKVlLY-pBGeetYdZ0AIL6vMStS1Xib" -o docker-compose.yml
-# In real life it would download the published version. For local testing we just rely on what's there.
+curl -fsSL "https://drive.google.com/uc?export=download&id=1zpaSh3xAl5477imhxDt8dqQ6aFmWT9aO" -o docker-compose.yml
+
+# Create placeholder files to prevent Docker from creating directories for them
+touch .gitconfig .git-credentials
+mkdir -p .workspace
 
 echo ""
 echo "✅ Installation complete!"
