@@ -44,26 +44,20 @@ services:
     image: realmegtnoet/alphalearnide:latest
     container_name: alpha-ide
     ports:
-      - "80:8080"
-      - "3000:3000"
+      - "80:80"
       - "3001:3001"
+      - "3000:3000"
       - "3002:3002"
       - "3003:3003"
       - "5000:5000"
       - "5500:5500"
       - "8000:8000"
-      - "8080:8080"
     environment:
-      - PUID=1000
-      - PGID=1000
       - TZ=UTC
-      - AUTH=none
-      - SUDO_PASSWORD=password
       - API_BASE_URL=http://host.docker.internal:4000
       - ALPHA_BACKEND=http://host.docker.internal:4000
     extra_hosts:
       - "host.docker.internal:host-gateway"
-    entrypoint: ["/bin/bash", "/start.sh"]
     volumes:
       - "./.workspace/:/home/workspace/"
       - "alpha-auth:/home/alpha-config/"
