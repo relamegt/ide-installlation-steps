@@ -44,15 +44,15 @@ services:
     image: realmegtnoet/alphalearnide:latest
     container_name: alpha-ide
     ports:
-      - "14080:80"
-      - "13000:3000"
-      - "13001:3001"
-      - "13002:3002"
-      - "13003:3003"
-      - "15000:5000"
-      - "15500:5500"
-      - "18000:8000"
-      - "18080:8080"
+      - "80:8080"
+      - "3000:3000"
+      - "3001:3001"
+      - "3002:3002"
+      - "3003:3003"
+      - "5000:5000"
+      - "5500:5500"
+      - "8000:8000"
+      - "8080:8080"
     environment:
       - PUID=1000
       - PGID=1000
@@ -84,5 +84,4 @@ docker-compose up -d
 echo ""
 echo "✅ Installation complete!"
 echo "Your IDE is now permanently running in the background."
-echo "Access it anytime at: http://localhost:14080"
-echo "App Preview at: http://localhost:13001"
+echo "Access it anytime at: http://localhost"
